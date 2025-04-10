@@ -1,0 +1,69 @@
+Package: EZFragility
+Title: Compute Neural Fragility for Ictal iEEG Time Series
+Version: 1.0.3
+Authors@R: 
+    c(person(
+    given = "Jiefei", 
+    family = "Wang",
+    email = "szwjf08@gmail.com", 
+    role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-2709-5332")),
+    person(
+    given = "Anne-Cecile", 
+    family = "Lesage",
+    email = "aclesage@gmail.com", 
+    role = "aut",
+    comment = c(ORCID = "0000-0002-9528-4899")),
+    person(
+    given = "Ioannis", 
+    family = "Malagaris",
+    email = "ymalag@gmail.com", 
+    role = "aut",
+    comment = c(ORCID = "0000-0001-5126-2068")),
+    person(
+    given = "Oliver", 
+    family = "Zhou",  
+    email = "zhou.oliverfr@gmail.com", 
+    role = "ctb"),
+    person(
+    given = "Liliana", 
+    family = "Camarillo Rodriguez",  
+    email = "camarilloliliana@gmail.com", 
+    role = "ctb",
+    comment = c(ORCID = "0000-0001-8288-6885")),
+    person(
+    given = "Sean", 
+    family = "O'Leary",  
+    email = "smoleary@utmb.edu", 
+    role = "ctb",
+    comment = c(ORCID = "0000-0003-3650-705X")),
+    person(
+    given = "Patrick", 
+    family = "Karas",
+    email = "pjkaras@UTMB.EDU", 
+    role = "ctb")
+    )
+Description: Provides tools to compute the neural fragility matrix from intracranial electrocorticographic (iEEG) recordings, enabling the analysis of brain dynamics during seizures. The package implements the method described by Li et al. (2017) <doi:10.23919/ACC.2017.7963378> and includes functions for data preprocessing (`Epoch`), fragility computation (`calcAdjFrag`), and visualization.
+License: GPL (>= 3)
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Depends: R (>= 4.1.0)
+LazyData: true
+Imports: stats, methods, ggplot2 (>= 3.4.0), viridis, ggtext, glue,
+        rlang, foreach, progress, ramify, reshape2
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0), doSNOW
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2025-04-09 17:51:22 UTC; jiewang
+Author: Jiefei Wang [aut, cre] (<https://orcid.org/0000-0002-2709-5332>),
+  Anne-Cecile Lesage [aut] (<https://orcid.org/0000-0002-9528-4899>),
+  Ioannis Malagaris [aut] (<https://orcid.org/0000-0001-5126-2068>),
+  Oliver Zhou [ctb],
+  Liliana Camarillo Rodriguez [ctb]
+    (<https://orcid.org/0000-0001-8288-6885>),
+  Sean O'Leary [ctb] (<https://orcid.org/0000-0003-3650-705X>),
+  Patrick Karas [ctb]
+Maintainer: Jiefei Wang <szwjf08@gmail.com>
+Repository: CRAN
+Date/Publication: 2025-04-10 14:40:09 UTC
