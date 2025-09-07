@@ -11,31 +11,27 @@ knitr::opts_chunk$set(
 ## ----ictal data---------------------------------------------------------------
 data("pt01EcoG")
 
-## create an epoch object
-epoch <- Epoch(pt01EcoG)
-epoch
+# option 1: boolean value indicating if the electrode is in the SOZ
+rowData(pt01EcoG)$soz
+
+# option 2: SOZ names from the metadata
+sozNames <- metaData(pt01EcoG)$sozNames
+sozNames
 
 ## -----------------------------------------------------------------------------
-visuIEEGData(epoch  = epoch)
+plot(pt01EcoG)
 
 ## -----------------------------------------------------------------------------
-# The electrode names corresponding to the site of the patient's surgery
-sozNames <- attr(pt01EcoG, "sozNames")
-
-## Show the electrodes that are marked as SOZ and additional 4 electrodes
 display <- c(sozNames, "MLT1", "MLT2", "MLT3", "MLT4")
-visuIEEGData(epoch  = epoch[display])
-
-## Equivalent to: 
-## visuIEEGData(epoch  = epoch[display, ])
-
-## constrain to the first 100 time points
-visuIEEGData(epoch  = epoch[display, 1:100])
+plot(pt01EcoG[display])
 
 ## -----------------------------------------------------------------------------
-epochClipped <- truncateTime(epoch, from = -1, to = 0)
+plot(pt01EcoG[display, 1:100])
 
-visuIEEGData(epoch  = epochClipped)
+## -----------------------------------------------------------------------------
+epochClipped <- crop(pt01EcoG, start = -1, end = 0)
+
+plot(epochClipped)
 
 ## -----------------------------------------------------------------------------
 ## Register a SNOW parallel backend with 4 workers
@@ -45,7 +41,7 @@ registerDoSNOW(cl)
 
 windowNum <- 250
 step <- 125
-pt01Frag <- calcAdjFrag(epoch = epoch, window = windowNum, step = step, parallel = TRUE, nSearch=100L,progress = TRUE)
+pt01Frag <- calcAdjFrag(epoch = pt01EcoG, window = windowNum, step = step, parallel = TRUE, nSearch=100L,progress = TRUE)
 
 # Fragility result
 pt01Frag
@@ -63,11 +59,11 @@ stats
 
 ## -----------------------------------------------------------------------------
 display <- c(sozNames, "MLT1", "MLT2", "MLT3", "MLT4")
-plotFragHeatmap(frag = pt01Frag, sozIndex = sozNames)
+plotFragHeatmap(frag = pt01Frag[display], groupIndex = sozNames)
 
 ## ----out.width="100%"---------------------------------------------------------
-plotFragDistribution(frag = pt01Frag, sozIndex = sozNames)
+plotFragDistribution(frag = pt01Frag[display], groupIndex = sozNames)
 
 ## ----out.width="100%"---------------------------------------------------------
-plotFragQuantile(frag = pt01Frag, sozIndex = sozNames)
+plotFragQuantile(frag = pt01Frag[display], groupIndex = sozNames, groupName = "SOZ")
 
