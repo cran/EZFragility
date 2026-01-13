@@ -59,11 +59,11 @@ stats
 
 ## -----------------------------------------------------------------------------
 display <- c(sozNames, "MLT1", "MLT2", "MLT3", "MLT4")
-plotFragHeatmap(frag = pt01Frag[display], groupIndex = sozNames)
+plot(pt01Frag[display], groupIndex = sozNames)
 
 ## ----out.width="100%"---------------------------------------------------------
-plotFragDistribution(frag = pt01Frag[display], groupIndex = sozNames)
+plotFragDistribution(pt01Frag[display], groupIndex = sozNames)
 
 ## ----out.width="100%"---------------------------------------------------------
-plotFragQuantile(frag = pt01Frag[display], groupIndex = sozNames, groupName = "SOZ")
+plotFragQuantile(pt01Frag[display], groupIndex = sozNames, groupName = "SOZ")
 
